@@ -1,31 +1,44 @@
 import { useState, useEffect } from 'react';
-// import {BrowserRouter as Router} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Preloader from './components/Preloader';
+// import HomePage from './pages/Homepage';
+// import Projects from './pages/Projects';
+// import Services from './pages/Services';
+// import Contact from './pages/Contact';
 export default function App() {
-  const [isAnimating, setIsAnimating] = useState(true);
+  
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 3000);
-  }, [setIsAnimating]);
+    setLoading(true);
+    
+      // Show the preloader for 2 seconds
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+    }, []);
+ 
+  
   return (
     <>
-      {isAnimating ? (<Preloader />) : (
+       {
+          loading ? (
+            <Preloader />
+          ) : (
 
-        <div className=" h-screen flex flex-col w-full ">
+            
+    <>
           <Navbar />
-          <section className="w-full flex flex-1 justify-center items-center text-center font-xl">
-            <p className="w-[80%] ">
-              Hello Everyone, This is Kausik's portfolio.
-              Is this working fine?
-            </p>
+          <section className="bg-dark_bg w-full h-screen flex justify-center items-center">
+           <Outlet />
           </section>
           <Footer />
-        </div>
-      )}
+        
+      </>
+        )
+     }
     </>
   )
 }
