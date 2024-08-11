@@ -7,14 +7,15 @@ export default {
   theme: {
     extend: {
       colors:{
-        "dark_bg" : "#2e3944",
-        "dark_nav" : "#212a31",
+        "dark_bg" : "#0c202f",
+        "dark_nav" : "#101e26",
         "light_text":  "#d1e8e2",
         
         "light_bg" : "#eae7dc",
         "light_nav": "#d3d9d4",
         "dark_text": "#212a31",
 
+        "dark_bg_2" : "#0C1844",
         "primary_btn" : "#124e66",
         "secondary_btn": "#748d92",
         "primary_border": "#66fcf1",

@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
-interface FormData {
-  name: string;
-  message: string;
-}
+// interface FormData {
+//   name: string;
+//   message: string;
+// }
 
 const Footer = () => {
   const { register, handleSubmit, reset } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmit = (data: FormData) => {
+  const onSubmitHandler = (data: any) => {
     setIsSubmitting(true);
   
     
@@ -32,7 +32,9 @@ const Footer = () => {
   }, 8000);
 };
   return (
-    <footer className="bg-dark_nav shadow-2xl text-light_text py-8 z-10">
+   
+   
+    <footer id="footer" className="bg-dark_nav shadow-2xl text-light_text py-8 z-10">
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0">
         {/* Left Section - Social Links */}
         <div className="W-[90%] flex flex-col md:w-1/3 space-y-4">
@@ -60,7 +62,7 @@ const Footer = () => {
         {/* Middle Section - Contact Form */}
         <div className="w-[90%] md:w-1/3 border border-light_text p-4 rounded-lg">
           <h2 className="text-xl font-semibold mb-4">Send me a message</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
+          <form onSubmit={() => handleSubmit(onSubmitHandler)} className="flex flex-col space-y-4">
             <input
               type="text"
               placeholder="Your Name"
@@ -75,7 +77,7 @@ const Footer = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-primary_btn text-light_text py-2 px-4 rounded hover:bg-primary_btn_dark transition-colors"
+              className="bg-primary_btn text-light_text hover:text-dark_text py-2 px-4 rounded hover:bg-secondary_btn transition-colors"
             >
               {isSubmitting ? 'Sending...' : 'Send'}
             </button>
@@ -89,7 +91,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright */}
-      <div className="text-center mt-8 bg-dark_text w-full">
+      <div className="text-center mt-8 w-full">
         <p className="text-sm">
           &copy; 2024 v0.1 Made with React & Tailwind CSS
         </p>
