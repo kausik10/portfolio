@@ -1,7 +1,12 @@
 const Projects = () => {
-  const { projects } = useProjectsValue();
+  const projects = [
+    { projectId: 1, name: 'Task Manager' },
+    { projectId: 2, name: 'Weather App' },
+    { projectId: 3, name: 'Portfolio Website' },
+  ];
 
   return (
+    
     <div>
       <ul className="sidebar__generic">
         {projects.map((project) => (
@@ -13,4 +18,5 @@ const Projects = () => {
     </div>
   );
 }
+
 export default Projects;
