@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 
+
 type NavItems = {id :number, label:string}
 const navItems:NavItems[] = [
   {id:1, label:"Home"},
@@ -13,25 +14,34 @@ const navItems:NavItems[] = [
 ]
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   
-  const [scrolled, setScroll] = useState(false);
-
+  const handleScroll = () => {
+    const currentScrollTop = window.pageYOffset;
+    if (currentScrollTop > lastScrollTop) {
+      // Scrolling down
+      setIsNavbarVisible(false);
+    } else {
+      // Scrolling up
+      setIsNavbarVisible(true);
+    }
+    setLastScrollTop(currentScrollTop);
+  };
   useEffect(() => {
-      const onScroll = () => {
-            if(window.scrollY > 50){
-              setScroll(true);
-            } else {
-             setScroll(false);
-            }
-        }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollTop]);
 
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
-    }, [] );
 
-  
+    const handleScrollToFooter = () => {
+      const footerElement = document.getElementById('footer');
+      if (footerElement) {
+        footerElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
 
   const navList = navItems.map((item, index) => {
 
@@ -39,12 +49,17 @@ export default function Navbar() {
 
           return (
             <li key={index} > 
-            <Link  to={`/${item.label.toLowerCase()}`} className={`text-xl font-semibold transition cursor-pointer ${ isActiveLink ? 'text-primary_border' : 'text-light_text'} hover:underline hover:text-primary_border`}>{item.label}</Link></li>
-  )
+            {item.label === "Contact" ? (
+              <button onClick={handleScrollToFooter} className={`text-xl font-semibold transition cursor-pointer ${ isActiveLink ? 'text-primary_border' : 'text-light_text'} hover:underline hover:text-primary_border`}>{item.label}</button>
+            ) : (
+            <Link  to={`/${item.label.toLowerCase()}`} className={`text-xl font-semibold transition cursor-pointer ${ isActiveLink ? 'text-primary_border' : 'text-light_text'} hover:underline hover:text-primary_border`}>{item.label}</Link>
+            )}
+            </li> 
+          );
 });
  return (
-  
-    <header className={`${scrolled ? "scrolled" : ""} w-full h-24 bg-dark_nav text-light_text flex justify-center shadow-xl items-center z-10`}>
+  <>
+    <header className={` ${isNavbarVisible ? 'translate-y-0' : '-translate-y-full'} fixed top-0 w-full h-24 bg-dark_nav text-light_text flex justify-center shadow-xl items-center z-10`}>
 
       <nav className="w-[90%] lg:w-[70%]  flex justify-between  items-center text-light_text" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <Link to="/">
@@ -73,8 +88,8 @@ export default function Navbar() {
 
         {/* for mobile responsivenss */}
         <section 
-        className={`w-screen z-30 lg:hidden absolute bg-dark_nav bg-opacity-80 backdrop-blur-sm right-0 top-24 transition-all ease-in-out ${
-          isMenuOpen ? 'translate-y-0' : '-translate-y-0'
+        className={` ${isNavbarVisible ? 'translate-y-0' : '-translate-y-full'} w-screen z-30 lg:hidden bg-dark_nav bg-opacity-80 absolute backdrop-blur-sm right-0 top-24 transition-all ease-in-out ${
+          isMenuOpen ? 'translate-y-0' : '-translate-y-full' 
            }`} 
           onClick={(e) => e.stopPropagation()}
     >
@@ -96,6 +111,8 @@ export default function Navbar() {
         </ul>
       </nav>
     </header>
+   
+    </>
   
   );
 }
