@@ -4,4 +4,33 @@
   box-sizing: border-box;
 }
 
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
+.animate-blink {
+  animation: blink 0.75s step-start infinite; /* Fast blinking */
+}
+
+/* Add responsive styles for mobile view */
+@media (max-width: 768px) {
+  .text-5xl {
+    font-size: 2rem; /* Adjust the font size for smaller screens */
+  }
+  
+  .h-8 {
+    height: 3rem; /* Adjust the height of the blinker for smaller screens */
+  }
+  
+  .w-1 {
+    width: 0.25rem; /* Adjust the width of the blinker for smaller screens */
+  }
+}

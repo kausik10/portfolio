@@ -46,9 +46,9 @@ export default function Navbar() {
   
     <header className={`${scrolled ? "scrolled" : ""} w-full h-24 bg-dark_nav text-light_text flex justify-center shadow-xl items-center z-10`}>
 
-      <nav className="w-[90%] lg:w-[70%]  flex justify-between  items-center text-light_text">
+      <nav className="w-[90%] lg:w-[70%]  flex justify-between  items-center text-light_text" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         <Link to="/">
-          <div className="z-50 text-2xl text-light_text flex flex-row hover:text-green-400 items-center justify-between gap-4 font-bold  hover:cursor-pointer">
+          <div className="z-50 text-2xl text-light_text flex flex-row hover:text-secondary_border items-center justify-between gap-4 font-bold  hover:cursor-pointer">
             <img src="Kausik.png" alt="Kausik" width={48} height={36} />
             <p className="">Kausik Paudel</p>
           </div>
@@ -73,12 +73,12 @@ export default function Navbar() {
 
         {/* for mobile responsivenss */}
         <section 
-        className={`w-screen z-30 lg:hidden bg-dark_nav bg-opacity-80 backdrop-blur-sm fixed top-24 right-0 transition-all ease-in-out ${
+        className={`w-screen z-30 lg:hidden absolute bg-dark_nav bg-opacity-80 backdrop-blur-sm right-0 top-24 transition-all ease-in-out ${
           isMenuOpen ? 'translate-y-0' : '-translate-y-0'
            }`} 
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={(e) => e.stopPropagation()}
     >
-         <div  onClick={(e) => e.stopPropagation()}>
+       
 
           
           {isMenuOpen && (
@@ -86,7 +86,7 @@ export default function Navbar() {
               {navList}
             </ul>
           )}
-          </div>
+          
     </section>
 
 

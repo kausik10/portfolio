@@ -1,40 +1,44 @@
-import { useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import "../App.css";
 
 const Preloader = () => {
-  const controls = useAnimation();
+  const [text, setText] = useState('');
+  const fullName = 'KAAUSIK PAUDEL'; // Replace with your desired text
 
   useEffect(() => {
-
-    const words = ['Coffee', 'Coding', 'Valorant']
-    const animate = async () => {
-      for (let i = 0; i < words.length; i++) {
-        const word = words[i];
-
-        for (let j = 0; j < word.length; j++) {
-          await controls.start({ opacity: 1, x: 0 });
-          await controls.start({ opacity: 0, x: 20 });
-        }
-
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < fullName.length -1 ) {
+        setText((prev) => prev + fullName[index]);
+        index++;
+      } else {
+        clearInterval(interval); // Stop the interval when the text is fully displayed
       }
-    };
+    }, 200); // Adjust the speed of the text animation here
 
-    animate();
-  }, [controls]);
+    return () => clearInterval(interval); // Clear interval on component unmount
+  }, [fullName]);
+
   return (
-    <>
-      <div className="h-[100vh] overflow-hidden width-[100%] bg-[#000] text-white fixed bottom-0 top-0 left-0 right-0 z-55 flex justify-center items-center">
-
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={controls} transition={{ duration: 2.5 }} className="flex items-center justify-between h-[4rem] w-[30rem] text-4xl font-bold ">
-          {['Coffee', 'Coding', 'Valorant'].map((word, index) => (
-            <motion.span key={index} className="inline-block mx-2">
-              {word}
-            </motion.span>
-          ))}
-        </motion.div>
-      </div>
-    </>
-
+    <motion.div
+      className="flex items-center justify-center min-h-screen bg-black relative"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }} // Fade out
+      transition={{ duration: 1 }}
+    >
+      <motion.h1
+        className="text-text_light text-3xl md:text-5xl font-bold relative z-10"
+        initial={{ x: '100%' }} // Start off the screen to the right
+        animate={{ x: 0 }} // Move into view
+        transition={{ duration: 1, ease: 'easeOut' }}
+      >
+        {text}
+        <span className="absolute ml-2 bottom-0 h-12 w-1 bg-dark_bg animate-blink"></span>
+      </motion.h1>
+    </motion.div>
   );
-}
+};
+
 export default Preloader;
