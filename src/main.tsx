@@ -9,7 +9,7 @@ import About from './pages/About.tsx';
 import Projects from './pages/Projects.tsx';
 
 import Blogs from './pages/Blogs.tsx';
-import Services from './pages/Services.tsx';
+
 
 
 const router = createBrowserRouter([
@@ -38,10 +38,7 @@ const router = createBrowserRouter([
                 path: "/blogs",
                 element: <Blogs />,
             },
-            {
-                path: "/services",
-                element: <Services />,
-            }
+           
         ]
     }
 ])
