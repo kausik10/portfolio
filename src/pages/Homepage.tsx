@@ -7,6 +7,7 @@ import { FaGolang } from "react-icons/fa6";
 import { FaRust } from "react-icons/fa";
 import "../App.css";
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const texts = [
   "web developer.",
@@ -45,8 +46,11 @@ const HomePage = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Portfolio | Kausik</title>
+    </Helmet>
     <div className='h-screen w-full bg-dark_bg'>
-    <section className="w-[90%] mx-auto h-full md:w-[70%] flex flex-col justify-start gap-16 lg:justify-between lg:flex-row items-center  text-light_text">
+    <section className="w-[90%] mx-auto h-full md:w-[70%] flex flex-col justify-start gap-8 lg:gap-16 lg:justify-between lg:flex-row items-center  text-light_text">
       <div className="transform transition-transform duration-300 lg:hover:scale-110 flex justify-center items-center mt-6 lg:p-0 pt-24 hover:cursor-pointer">
         <img src="kausik_paudel.png" alt="Kausik Paudel" className="xl:w-96 xl:h-96 lg:w-80 lg:h-80 border border-4 shadow-2xl border-primary_border rounded-full object-cover" />
       </div>
@@ -59,7 +63,7 @@ const HomePage = () => {
           </span>
           
           </p>
-        <span className='flex flex-row gap-4 md:gap-8 text-4xl md:text-5xl lg:text-6xl mt-8'>
+        <span className='flex flex-row gap-4 md:gap-8 text-3xl md:text-5xl lg:text-6xl mt-8'>
           <FaReact />
           <SiExpress />
           <FaNodeJs />
@@ -69,41 +73,43 @@ const HomePage = () => {
         </span>
         
       </div>
-      {/* About Me section */}
-
-      
     </section>
     </div>
-    <div className='h-screen w-full '>
+
+      {/* About Me section */}
+    <div className='h-screen w-full bg-dark_bg_secondary'>
 
 
-    <section className="w-[90%] mx-auto  h-full md:w-[70%] flex flex-col justify-start md:justify-center gap-8 items-center text-center md:text-left">
+    <section className="w-[90%] mx-auto h-full md:w-[70%] flex flex-col justify-start md:justify-center gap-8 items-center text-center md:text-left">
     <h2 className="md:hidden text-5xl  font-bold mb-4 lg:pt-24 pt-8"><span className='text-light_text'>About </span> Me</h2>
-    <div className='flex flex-col lg:flex-row justify-start items-center lg:justify-between w-full'>
-      <span className='flex flex-col lg:w-1/2 items-start justify-between text-center md:text-left'>
-        <p className="text-xl text-start mb-4">
+    <div className='flex flex-col md:flex-row justify-start items-center md:justify-between w-full'>
+      <span className='flex flex-col lg:w-1/2 items-start justify-between text-justify lg:text-xl tracking-wide text-lg'>
+        <p className="text-start mb-4">
           Hello beautiful people! I am <strong>Kausik Paudel</strong> 
         </p>
-        <p className="text-xl text-start mb-4">
-          I am a tech enthusiast and a full-stack developer with a passion for building web and mobile applications.   
+        <p className="text-start mb-4">
+          I am a tech enthusiast    
         </p>
-        <p className="text-xl text-start mb-4">
+        <p className="text-start mb-4">
+          I am a full-stack developer with a passion for building web and mobile applications.    
+        </p>
+        <p className="text-start mb-4">
          Linux is my second home! Of course, my chair and desk are my first home. 
         </p>
-        <p className="text-xl text-start mb-4">
+        <p className="text-start mb-4">
          I am a huge fan of open-source software and I love to contribute to the community.
         </p>
-        <p className="text-xl text-start mb-4">
+        <p className="text-start mb-4">
          I am currently learning AI, ML, ReactNative and Golang.
         </p>
-        <p className="text-xl text-start mb-4">
+        <p className="text-start mb-4">
           I am a writer and I love to write about tech, life, and everything in between.
         </p>
-        <p className="text-lg text-xl text-start mb-4">
+        <p className="text-start mb-4">
           I am a rugby player and I love to play rugby. I am a huge fan of Beauden Barrett.
         </p>
       </span>
-      <div className="hidden lg:w-1/2 lg:flex justify-center items-center mt-6 lg:p-0 pt-24 hover:cursor-pointer">
+      <div className="hidden lg:w-1/2 md:flex justify-center items-center mt-6 lg:p-0 pt-24 hover:cursor-pointer">
         <img src="about_me.png" alt="About Me" className="w-full h-auto max-w-[400px] max-h-[400px]  object-cover" />
       </div>
     </div>

@@ -97,7 +97,7 @@ export default function Navbar() {
 
           
           {isMenuOpen && (
-            <ul className="flex flex-col gap-4 p-4 ml-12 w-full">
+            <ul className="flex flex-col gap-4 p-4 ml-12 w-full" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {navList}
             </ul>
           )}
