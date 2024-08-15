@@ -10,12 +10,12 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const texts = [
-  "web developer.",
-  "mobile app developer.",
-  "linux enthusiast.",
-  "full stack developer.",
-  "writer.",
-  "rugby player.",
+  "Web developer.",
+  "Mobile app developer.",
+  "Linux enthusiast.",
+  "Full stack developer.",
+  "Writer ✍.",
+  "Rugby player 🏉.",
 ];
 
 const HomePage = () => {
@@ -25,6 +25,7 @@ const HomePage = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
+    
     const interval = setInterval(() => {
       if (isDeleting) {
         setDisplayedText(prev => prev.slice(0, -1));
@@ -113,9 +114,9 @@ const HomePage = () => {
         <img src="about_me.png" alt="About Me" className="w-full h-auto max-w-[400px] max-h-[400px]  object-cover" />
       </div>
     </div>
-    <div className=''>
+    
       <Link to='/about' className="bg-primary_btn text-light_text hover:text-dark_text py-2 px-4 rounded hover:bg-secondary_btn">Read More</Link>
-    </div>
+    
   </section>
   </div>
 
