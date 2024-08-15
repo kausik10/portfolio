@@ -19,17 +19,12 @@ const Footer = () => {
     const subject = encodeURIComponent(`Message from ${data.name}`);
     const body = encodeURIComponent(data.message);
     const gmailComposeURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kausikpaudel@gmail.com&su=${subject}&body=${body}`;
-  
     
     window.open(gmailComposeURL, '_blank');
 
-    setTimeout(() => {
-      <div>
-        <p> Kausik Has received the Email. He will get in Touch with you soon. If this window doesn't close automatically, feel free to close this window.</p>
-      </div>
-      reset();
-      setIsSubmitting(false);
-  }, 8000);
+    reset();
+    setIsSubmitting(false);
+  
 };
   return (
    
@@ -62,17 +57,19 @@ const Footer = () => {
         {/* Middle Section - Contact Form */}
         <div className="w-[90%] md:w-1/3 border border-light_text p-4 rounded-lg">
           <h2 className="text-xl font-semibold mb-4">Send me a message</h2>
-          <form onSubmit={() => handleSubmit(onSubmitHandler)} className="flex flex-col space-y-4">
+          <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col space-y-4">
             <input
               type="text"
               placeholder="Your Name"
               {...register('name', { required: true })}
               className="p-2 border border-secondary_border rounded"
+              required
             />
             <textarea
               placeholder="Your Message"
               {...register('message', { required: true })}
               className="p-2 border border-secondary_border rounded"
+              required
             />
             <button
               type="submit"
