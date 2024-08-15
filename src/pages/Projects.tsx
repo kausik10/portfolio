@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const Projects = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const websites = [
   { name: "KE-Commerce", link: "https://www.github.com/kausik10/e-commerce" },

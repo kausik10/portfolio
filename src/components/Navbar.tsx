@@ -52,7 +52,7 @@ export default function Navbar() {
             {item.label === "Contact" ? (
               <button onClick={handleScrollToFooter} className={`text-xl font-semibold transition cursor-pointer ${ isActiveLink ? 'text-primary_border' : 'text-light_text'} hover:underline hover:text-primary_border`}>{item.label}</button>
             ) : (
-            <Link  to={`/${item.label.toLowerCase()}`} className={`text-xl font-semibold transition cursor-pointer ${ isActiveLink ? 'text-primary_border' : 'text-light_text'} hover:underline hover:text-primary_border`}>{item.label}</Link>
+            <Link to={`/${item.label.toLowerCase()}`} className={`text-xl font-semibold transition cursor-pointer ${ isActiveLink ? 'text-primary_border' : 'text-light_text'} hover:underline hover:text-primary_border`}>{item.label}</Link>
             )}
             </li> 
           );
@@ -61,7 +61,7 @@ export default function Navbar() {
   <>
     <header className={` ${isNavbarVisible ? 'translate-y-0' : '-translate-y-full'} fixed top-0 w-full h-24 bg-dark_nav text-light_text flex justify-center shadow-xl items-center z-10`}>
 
-      <nav className="w-11/12 md:w-9/12 max-w-[1280px] flex justify-between  items-center text-light_text" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <nav className="w-11/12 md:w-9/12 max-w-[1280px] flex justify-between  items-center text-light_text">
         <Link to="/">
           <div className="z-50 text-2xl text-light_text flex flex-row hover:text-secondary_border items-center justify-between gap-4 font-bold  hover:cursor-pointer">
             <img src="Kausik.png" alt="Kausik" width={48} height={36} />

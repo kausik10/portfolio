@@ -1,13 +1,18 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
 const About = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <>
     <Helmet>
       <title>About | Kausik</title>
     </Helmet>
-    <div className='w-full bg-dark_bg h-full'>
+    <div className='w-full bg-dark_bg'>
     <section className="w-[90%] mx-auto md:w-[40%] flex flex-col justify-start gap-8 mt-6 pt-24 pb-24 items-start  text-light_text">
       
       {/* About Me section */}<p className="text-center mx-auto text-3xl md:text-5xl lg:text-6xl font-bold mt-2 text-light_text">About ME</p>
