@@ -49,8 +49,8 @@ const HomePage = () => {
     <Helmet>
       <title>Portfolio | Kausik</title>
     </Helmet>
-    <div className='h-screen w-full bg-dark_bg'>
-    <section className="w-[90%] mx-auto h-full md:w-[70%] flex flex-col justify-start gap-8 lg:gap-16 lg:justify-between lg:flex-row items-center  text-light_text">
+    <div className='h-full w-full bg-dark_bg'>
+    <section className="w-11/12 md:w-9/12 max-w-[1280px] mx-auto xl:h-screen  flex flex-col justify-start gap-8 lg:gap-16 lg:justify-between lg:flex-row items-center text-light_text pb-8">
       <div className="transform transition-transform duration-300 lg:hover:scale-110 flex justify-center items-center mt-6 lg:p-0 pt-24 hover:cursor-pointer">
         <img src="kausik_paudel.png" alt="Kausik Paudel" className="xl:w-96 xl:h-96 lg:w-80 lg:h-80 border border-4 shadow-2xl border-primary_border rounded-full object-cover" />
       </div>
@@ -74,13 +74,13 @@ const HomePage = () => {
         
       </div>
     </section>
-    </div>
+   
 
       {/* About Me section */}
-    <div className='h-screen w-full bg-dark_bg_secondary'>
+    <div className='w-full bg-dark_bg_secondary'> 
 
 
-    <section className="w-[90%] mx-auto h-full md:w-[70%] flex flex-col justify-start md:justify-center gap-8 items-center text-center md:text-left">
+    <section className="w-11/12 md:w-9/12 max-w-[1280px] mx-auto xl:h-screen flex flex-col justify-start md:justify-center gap-8 items-center text-center md:text-left md:pt-8 pb-4">
     <h2 className="md:hidden text-5xl  font-bold mb-4 lg:pt-24 pt-8"><span className='text-light_text'>About </span> Me</h2>
     <div className='flex flex-col md:flex-row justify-start items-center md:justify-between w-full'>
       <span className='flex flex-col lg:w-1/2 items-start justify-between text-justify lg:text-xl tracking-wide text-lg'>
@@ -117,6 +117,7 @@ const HomePage = () => {
       <Link to='/about' className="bg-primary_btn text-light_text hover:text-dark_text py-2 px-4 rounded hover:bg-secondary_btn">Read More</Link>
     </div>
   </section>
+  </div>
 
     
 </div>

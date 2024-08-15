@@ -29,11 +29,14 @@ export default function App() {
             exit={{ opacity: 0.2 }}
             transition={{ duration: 0.5 }}
           > */}
+          <div className=''>
+
             <Navbar />
            
               <Outlet />
           
             <Footer />
+          </div>
           {/* </motion.div> */}
         {/* // )} */}
       {/* // </AnimatePresence> */}

@@ -34,7 +34,7 @@ const Footer = () => {
   return (
    
    
-    <footer id="footer" className="bg-dark_nav shadow-2xl text-light_text py-8 z-10">
+    <footer id="footer" className="bg-dark_nav drop-shadow-2xl w-full text-light_text py-8 z-20">
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0">
         {/* Left Section - Social Links */}
         <div className="W-[90%] flex flex-col md:w-1/3 space-y-4">
