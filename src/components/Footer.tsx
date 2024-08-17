@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { siteConfig } from '../config/site';
 
 // interface FormData {
 //   name: string;
@@ -18,7 +19,7 @@ const Footer = () => {
     
     const subject = encodeURIComponent(`Message from ${data.name}`);
     const body = encodeURIComponent(data.message);
-    const gmailComposeURL = `https://mail.google.com/mail/?view=cm&fs=1&to=kausikpaudel@gmail.com&su=${subject}&body=${body}`;
+    const gmailComposeURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.links.gmail}&su=${subject}&body=${body}`;
     
     window.open(gmailComposeURL, '_blank');
 
@@ -35,19 +36,19 @@ const Footer = () => {
         <div className="W-[90%] flex flex-col md:w-1/3 space-y-4">
           <h2 className="md:text-3xl text-2xl font-bold">Connect with me on socials</h2>
           <div className="flex flex-col space-y-4">
-            <Link to='https://www.github.com/kausik10' target='_blank' className="hover:text-primary_border flex items-center space-x-3">
+            <Link to={siteConfig.links.github} target='_blank' rel="noreferrer" className="hover:text-primary_border flex items-center space-x-3">
               <FaGithub className="text-2xl md:text-3xl  transition-colors" />
               <span className='text-lg md:text-xl font-light'>GitHub</span>
             </Link>
-            <Link to='https://www.linkedin.com/in/kausik-paudel' target='_blank' className="hover:text-primary_border flex items-center space-x-3">
+            <Link to={siteConfig.links.linkedin} target='_blank' rel="noreferrer" className="hover:text-primary_border flex items-center space-x-3">
               <FaLinkedin className="text-2xl md:text-3xl hover:text-primary_btn transition-colors" />
               <span className='text-lg md:text-xl font-light'>LinkedIn</span>
             </Link>
-            <Link to='https://www.instagram.com/seek.mee/' target='_blank' className="hover:text-primary_border flex items-center space-x-3">
+            <Link to={siteConfig.links.instagram} target='_blank' className="hover:text-primary_border flex items-center space-x-3">
               <FaInstagram className="text-2xl md:text-3xl hover:text-primary_btn transition-colors" />
               <span className='text-lg md:text-xl font-light'>Instagram</span>
             </Link>
-            <Link to='https://www.facebook.com/kausik.paudel.3' target='_blank' className="hover:text-primary_border flex items-center space-x-3">
+            <Link to={siteConfig.links.facebook} target='_blank' className="hover:text-primary_border flex items-center space-x-3">
               <FaFacebookF className="text-2xl md:text-3xl hover:text-primary_btn transition-colors" />
               <span className='text-lg md:text-xl font-light'>Facebook</span>
             </Link>

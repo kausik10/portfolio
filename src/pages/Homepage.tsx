@@ -10,12 +10,12 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const texts = [
-  "Web developer.",
-  "Mobile app developer.",
-  "Linux enthusiast.",
-  "Full stack developer.",
+  "Web Developer.",
+  "Mobile App Developer.",
+  "Linux Enthusiast.",
+  "Full Stack Developer.",
   "Writer ✍.",
-  "Rugby player 🏉.",
+  "Rugby Player 🏉.",
 ];
 
 const HomePage = () => {
