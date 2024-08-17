@@ -1,8 +1,18 @@
 // import { useState, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import { useEffect } from 'react';
 // import Preloader from './components/Preloader';
+
+function ScrollToTop() {
+  const {pathname} = useLocation()
+
+  useEffect (() => {
+      window.scrollTo(0, 0)
+  }, [pathname])
+  return null;
+}
 
 
 export default function App() {
@@ -29,6 +39,7 @@ export default function App() {
             exit={{ opacity: 0.2 }}
             transition={{ duration: 0.5 }}
           > */}
+          <ScrollToTop />
           <div className=''>
 
             <Navbar />
