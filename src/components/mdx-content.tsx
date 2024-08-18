@@ -1,7 +1,11 @@
-import * as runtime from 'react/jsx-runtime';
+import * as runtime from "react/jsx-runtime";
+import { Callout } from "./callout";
+import { Image } from "./image";
 
 const sharedComponents = {
   // Add any global components you want to use across your MDX files
+  Callout,
+  Image,
 };
 
 const useMDXComponent = (code: string) => {
