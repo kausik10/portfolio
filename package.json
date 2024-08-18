@@ -7,7 +7,7 @@
     "vite": "vite",
     "velite": "velite dev",
     "dev": "concurrently \"yarn vite\" \"yarn velite\"",
-    "build": "tsc && velite && vite build",
+    "build": "velite && tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
