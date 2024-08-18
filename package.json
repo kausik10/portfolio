@@ -4,15 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "vite": "vite",
+    "velite": "velite dev",
+    "dev": "concurrently \"yarn vite\" \"yarn velite\"",
+    "build": "velite && tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mdx-js/loader": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
-    "@mdx-js/rollup": "^3.0.1",
     "@tailwindcss/typography": "^0.5.14",
     "aos": "3.0.0-beta.6",
     "framer-motion": "^10.18.0",
@@ -23,9 +22,7 @@
     "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.52.2",
     "react-icons": "^4.12.0",
-    "react-markdown": "^9.0.1",
-    "react-router-dom": "^6.21.1",
-    "vite-plugin-mdx": "^3.6.0"
+    "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
     "@types/node": "^22.4.0",
@@ -35,11 +32,12 @@
     "@typescript-eslint/parser": "^6.14.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.32",
-    "prettier": "2.8",
+    "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.2.2",
