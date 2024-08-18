@@ -2,10 +2,35 @@ import { Helmet } from "react-helmet-async";
 import { posts } from "#site/content";
 import { PostItem } from "@/components/PostItem";
 import { sortPosts } from "@/utils/sortPost";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Pagination from "@/components/pagination";
+
+const POSTS_PER_PAGE = 5;
 
 function Blog() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+  const pageFromURL = parseInt(queryParams.get("page") || "1");
+  const [currentPage, setCurrentPage] = useState(pageFromURL);
+
+  useEffect(() => {
+    navigate(`?page=${currentPage}`, { replace: true });
+  }, [currentPage, navigate]);
+
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
-  const displayPosts = sortedPosts;
+  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+  const displayPosts = sortedPosts.slice(
+    POSTS_PER_PAGE * (currentPage - 1),
+    POSTS_PER_PAGE * currentPage,
+  );
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <>
       <Helmet>
@@ -37,6 +62,16 @@ function Blog() {
             </ul>
           ) : (
             <p>Nothing to see here</p>
+          )}
+
+          {totalPages > 1 && (
+            <div className="flex w-full flex-row items-end justify-end">
+              <Pagination
+                postsPerPage={POSTS_PER_PAGE}
+                totalPosts={sortedPosts.length}
+                paginate={paginate}
+              />
+            </div>
           )}
         </section>
       </div>
