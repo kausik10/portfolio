@@ -3,9 +3,17 @@ import { useEffect, useState } from "react";
 import { posts } from "#site/content";
 import { MDXContent } from "@/components/mdx-content";
 import { Helmet } from "react-helmet-async";
-import { useParams, Navigate } from "react-router-dom";
+import {
+  useParams,
+  Navigate,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 const BlogPost = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const { slugAsParams } = useParams();
   const [post, setPost] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
@@ -44,6 +52,10 @@ const BlogPost = () => {
     return <div>Post not found</div>;
   }
 
+  const handleGoBack = () => [
+    navigate(location.state?.from || "/blog", { replace: true }),
+  ];
+
   return (
     <>
       <Helmet>
@@ -62,6 +74,15 @@ const BlogPost = () => {
           <hr className="my-4 h-px w-full border-0 bg-light_bg" />
           <div className="text-xl">
             <MDXContent code={post!.body} />
+          </div>
+          <hr className="my-4 h-px w-full border-0 bg-light_bg" />
+          <div className="flex flex-row items-end justify-end pb-8">
+            <button
+              className="rounded border border-secondary_btn bg-dark_bg_secondary px-4 py-2 text-light_text"
+              onClick={handleGoBack}
+            >
+              Go Back
+            </button>
           </div>
         </article>
       </section>
