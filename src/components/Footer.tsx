@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { FaGithub, FaLinkedin, FaInstagram, FaFacebookF } from 'react-icons/fa';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { siteConfig } from '../config/site';
+import { useState } from "react";
+import { FaGithub, FaLinkedin, FaInstagram, FaFacebookF } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { siteConfig } from "../config/site";
 
 // interface FormData {
 //   name: string;
@@ -15,81 +15,103 @@ const Footer = () => {
 
   const onSubmitHandler = (data: any) => {
     setIsSubmitting(true);
-  
-    
+
     const subject = encodeURIComponent(`Message from ${data.name}`);
     const body = encodeURIComponent(data.message);
     const gmailComposeURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.links.gmail}&su=${subject}&body=${body}`;
-    
-    window.open(gmailComposeURL, '_blank');
+
+    window.open(gmailComposeURL, "_blank");
 
     reset();
     setIsSubmitting(false);
-  
-};
+  };
   return (
-   
-   
-    <footer id="footer" className="bg-dark_nav drop-shadow-2xl w-full text-light_text py-8 z-20">
-      <div className="container mx-auto flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0">
+    <footer
+      id="footer"
+      className="z-20 w-full bg-dark_nav py-8 text-light_text drop-shadow-2xl"
+    >
+      <div className="container mx-auto flex flex-col items-center justify-center space-y-8 md:flex-row md:space-y-0">
         {/* Left Section - Social Links */}
-        <div className="W-[90%] flex flex-col md:w-1/3 space-y-4">
-          <h2 className="md:text-3xl text-2xl font-bold">Connect with me on socials</h2>
+        <div className="W-[90%] flex flex-col space-y-4 md:w-1/3">
+          <h2 className="text-2xl font-bold md:text-3xl">
+            Connect with me on socials
+          </h2>
           <div className="flex flex-col space-y-4">
-            <Link to={siteConfig.links.github} target='_blank' rel="noreferrer" className="hover:text-primary_border flex items-center space-x-3">
-              <FaGithub className="text-2xl md:text-3xl  transition-colors" />
-              <span className='text-lg md:text-xl font-light'>GitHub</span>
+            <Link
+              to={siteConfig.links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center space-x-3 hover:text-primary_border"
+            >
+              <FaGithub className="text-2xl transition-colors  md:text-3xl" />
+              <span className="text-lg font-light md:text-xl">GitHub</span>
             </Link>
-            <Link to={siteConfig.links.linkedin} target='_blank' rel="noreferrer" className="hover:text-primary_border flex items-center space-x-3">
-              <FaLinkedin className="text-2xl md:text-3xl hover:text-primary_btn transition-colors" />
-              <span className='text-lg md:text-xl font-light'>LinkedIn</span>
+            <Link
+              to={siteConfig.links.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center space-x-3 hover:text-primary_border"
+            >
+              <FaLinkedin className="text-2xl transition-colors hover:text-primary_btn md:text-3xl" />
+              <span className="text-lg font-light md:text-xl">LinkedIn</span>
             </Link>
-            <Link to={siteConfig.links.instagram} target='_blank' className="hover:text-primary_border flex items-center space-x-3">
-              <FaInstagram className="text-2xl md:text-3xl hover:text-primary_btn transition-colors" />
-              <span className='text-lg md:text-xl font-light'>Instagram</span>
+            <Link
+              to={siteConfig.links.instagram}
+              target="_blank"
+              className="flex items-center space-x-3 hover:text-primary_border"
+            >
+              <FaInstagram className="text-2xl transition-colors hover:text-primary_btn md:text-3xl" />
+              <span className="text-lg font-light md:text-xl">Instagram</span>
             </Link>
-            <Link to={siteConfig.links.facebook} target='_blank' className="hover:text-primary_border flex items-center space-x-3">
-              <FaFacebookF className="text-2xl md:text-3xl hover:text-primary_btn transition-colors" />
-              <span className='text-lg md:text-xl font-light'>Facebook</span>
+            <Link
+              to={siteConfig.links.facebook}
+              target="_blank"
+              className="flex items-center space-x-3 hover:text-primary_border"
+            >
+              <FaFacebookF className="text-2xl transition-colors hover:text-primary_btn md:text-3xl" />
+              <span className="text-lg font-light md:text-xl">Facebook</span>
             </Link>
           </div>
         </div>
 
         {/* Middle Section - Contact Form */}
-        <div className="w-[90%] md:w-1/3 border border-light_text p-4 rounded-lg">
-          <h2 className="text-xl font-semibold mb-4">Send me a message</h2>
-          <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col space-y-4">
+        <div className="w-[90%] rounded-lg border border-light_text p-4 md:w-1/3">
+          <h2 className="mb-4 text-xl font-semibold">Send me a message</h2>
+          <form
+            onSubmit={handleSubmit(onSubmitHandler)}
+            className="flex flex-col space-y-4"
+          >
             <input
               type="text"
               placeholder="Your Name"
-              {...register('name', { required: true })}
-              className="p-2 border border-secondary_border rounded"
+              {...register("name", { required: true })}
+              className="rounded border border-secondary_border p-2"
               required
             />
             <textarea
               placeholder="Your Message"
-              {...register('message', { required: true })}
-              className="p-2 border border-secondary_border rounded"
+              {...register("message", { required: true })}
+              className="rounded border border-secondary_border p-2"
               required
             />
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-primary_btn text-light_text hover:text-dark_text py-2 px-4 rounded hover:bg-secondary_btn transition-colors"
+              className="rounded bg-primary_btn px-4 py-2 text-light_text transition-colors hover:bg-secondary_btn hover:text-dark_text"
             >
-              {isSubmitting ? 'Sending...' : 'Send'}
+              {isSubmitting ? "Sending..." : "Send"}
             </button>
           </form>
         </div>
       </div>
 
-{/* tapering hr */}
+      {/* tapering hr */}
       <div className="my-8">
-        <hr className="border-0 h-1 bg-gradient-to-r from-transparent via-light_text to-transparent mx-auto w-2/3" />
+        <hr className="mx-auto h-1 w-2/3 border-0 bg-gradient-to-r from-transparent via-light_text to-transparent" />
       </div>
 
       {/* Copyright */}
-      <div className="text-center mt-8 w-full">
+      <div className="mt-8 w-full text-center">
         <p className="text-sm">
           &copy; 2024 v0.1 Made with React & Tailwind CSS
         </p>

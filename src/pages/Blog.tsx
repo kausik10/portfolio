@@ -12,14 +12,14 @@ function Blog() {
         <title>Blogs | Kausik</title>
       </Helmet>
       <div className="w-full bg-dark_bg ">
-        <section className="mx-auto mt-6 flex h-full w-11/12 max-w-[1280px] flex-col items-start justify-start gap-8 pb-24 pt-24 text-light_text md:w-9/12  lg:gap-16">
+        <section className="mx-auto mt-6 flex h-full w-11/12 max-w-[1280px] flex-col items-start justify-start gap-8 pb-24 pt-24 text-light_text md:w-[40%]  lg:gap-16">
           <p className="mx-auto mt-2 text-center text-3xl font-bold text-light_text md:text-5xl lg:text-6xl">
             Blogs
           </p>
 
           {/* <hr className="border-0 h-2 mx-auto w-2/3" /> */}
           {displayPosts?.length > 0 ? (
-            <ul className="mx-auto flex flex-col flex-wrap items-center justify-center gap-4">
+            <ul className="style-none mx-auto flex w-full flex-col justify-center gap-4">
               {displayPosts.map((post) => {
                 const { slugAsParams, date, title, description } = post;
                 console.log(post);
