@@ -7,7 +7,6 @@ interface PostItemProps {
   title: string;
   description?: string;
   date: string;
-  onClick?: (slugAsParams: string) => void;
 }
 
 export function PostItem({
