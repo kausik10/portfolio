@@ -2,8 +2,6 @@ import { MenuIcon, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-
-
 type NavItems = {id :number, label:string}
 const navItems:NavItems[] = [
   {id:1, label:"Home"},

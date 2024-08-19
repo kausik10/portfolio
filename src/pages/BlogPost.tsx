@@ -52,9 +52,9 @@ const BlogPost = () => {
     return <div>Post not found</div>;
   }
 
-  const handleGoBack = () => [
-    navigate(location.state?.from || "/blog", { replace: true }),
-  ];
+  const handleGoBack = () => {
+    navigate(location.state?.from || "/blog", { replace: true });
+  };
 
   return (
     <>
