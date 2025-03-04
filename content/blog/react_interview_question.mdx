@@ -1,0 +1,156 @@
+---
+title: React Interview Questions For Junior Dev
+description: Here are some basic Questions for React Interview for Junior Level Devs
+date: 2025-03-04
+tags: "programming"
+published: true
+---
+
+# Basic React Concepts
+
+- **What is React, and how does it differ from traditional JavaScript frameworks?**
+- **What are the advantages of using React?**
+- **What is JSX? Why is it used in React?**
+- **What is the difference between functional and class components?**
+- **What are props in React? How are they different from state?**
+- **What is state in React, and how do you update it?**
+- **What is the purpose of `key` in lists, and why is it important?**
+- **How does React handle events compared to vanilla JavaScript?**
+
+# React Hooks
+
+- **What are React Hooks? Why were they introduced?**
+- **What is the difference between `useState` and `useEffect`?**
+- **How would you use `useEffect` to fetch data when a component mounts?**
+- **What is the significance of the dependency array in `useEffect`?**
+- **What is the difference between `useRef` and `useState`?**
+- **What is `useContext`, and how is it used in React?**
+- **How does `useReducer` work, and when would you use it over `useState`?**
+
+# Component Lifecycle and Rendering
+
+- **What are React lifecycle methods? Can you name some?**
+- **What is the difference between `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`?**
+- **How do you optimize performance in React applications?**
+- **What are controlled and uncontrolled components?**
+- **What is memoization in React, and how does `React.memo` help?**
+
+# Routing and Navigation
+
+- **What is React Router, and how does it work?**
+- **How do you define routes in React Router?**
+- **What is the difference between `<BrowserRouter>` and `<HashRouter>`?**
+- **How do you pass parameters in React Router?**
+- **What is the purpose of `useNavigate` or `Link` in React Router?**
+
+# Forms and Handling Input
+
+- **How do you handle forms in React?**
+- **What is the difference between controlled and uncontrolled components?**
+- **How do you handle form validation in React?**
+- **What are synthetic events in React?**
+- **How do you use `useRef` to manage form inputs?**
+
+# Miscellaneous
+
+- **What is the virtual DOM, and how does React use it?**
+- **What is reconciliation in React?**
+- **How do you handle errors in React components?**
+- **What is the difference between SSR (Server-Side Rendering) and CSR (Client-Side Rendering)?**
+- **What is lazy loading in React, and how do you implement it?**
+
+---
+
+# Basic React Coding Questions
+
+## 1. Counter Component (`useState`)
+
+```jsx
+import { useState } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+## 2. Controlled Input Field (`useState`)
+
+```jsx
+import { useState } from "react";
+
+const InputField = () => {
+  const [text, setText] = useState("");
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Type here..."
+      />
+      <p>Typed Text: {text}</p>
+    </div>
+  );
+};
+
+export default InputField;
+```
+
+## 3. Fetch Data from an API (`useEffect`)
+
+```jsx
+import { useState, useEffect } from "react";
+
+const UserList = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  return (
+    <div>
+      <h2>User List</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default UserList;
+```
+
+## 4. Toggle Component (`useState`)
+
+```jsx
+import { useState } from "react";
+
+const Toggle = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setIsOn(!isOn)}>{isOn ? "ON" : "OFF"}</button>
+    </div>
+  );
+};
+
+export default Toggle;
+```
