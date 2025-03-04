@@ -1,0 +1,93 @@
+---
+title: How to move WSL from one drive to the next
+description: Learn How to Move WSL from one drive to the next
+date: 2021-10-01
+tags: "programming"
+published: true
+---
+
+<p>
+  Are you a developer who uses windows primarily? But you hate the Windows
+  Command Line Interface and instead use WSL for development?
+</p>
+
+<p>
+  WSL primarily runs on C: drive by default. This means you will eventually run
+  out of storage on your C: drive as your file size grows. This will hamper the
+  performance of your system.
+</p>
+
+<p>
+  Don’t worry. You have come to the right place for figuring out the solution to
+  this problem. You can move your WSL from C: drive to other drive easily and
+  never worry about your C: drive running out of storage.
+</p>
+
+### Step 1: Find the location of your WSL
+
+1. Press  + R on your Keyboard to open Run menu.
+
+2. Type %LocalAppData% and press OK.
+
+3. Locate the Packages folder.
+
+4. Locate the WSL folder. In my case it `CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc`. Open the folder.
+
+<p>
+  Congratulations, you have successfully located the WSL distro. Make sure you
+  are in the folder location
+  `C:\...\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc`
+  Inside this location, you should be able to see a folder named `LocalState`.
+</p>
+
+### Step 2: Move the LocalState folder and paste it in another Drive
+
+<p>
+Personally, I have moved the `LocalState` from `C:` drive to `E:` drive. This should be a relatively simpler step.
+
+Just `Cut + Paste` the `LocalState` folder to your desired location. In my case, I have moved it to `E:` drive.
+
+Now, if you try to open your `WSL`, it won't run. Let's fix that.
+
+</p>
+
+### Step 3: Install Link Shell Extension
+
+1. Search Link Shell Extension on your web browser.
+
+2. Download and install the version that matches your system.
+
+3. Or you can download it from [Link Shell Extension](https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html).
+
+<p>
+  Once you install Link Shell Extension, it will restart your file explorer so
+  that the changes can appear in your system.
+</p>
+
+Okay, we come to the final step now!
+
+### Step 4: Create Junction link of the folder in your other drive to original location in C: drive.
+
+1. Navigate to the `LocalState` folder in your new location. In my case, it is in `E:` drive.
+
+2. Right-click on the `LocalState` folder and select `Pick Link Source`.
+
+3. Navigate to the original location of the `LocalState` folder in `C:` drive. It should be something like `C:\...\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc`
+
+4. Right-click on the folder and select `Drop as -> Junction`.
+
+<p>
+  Now You should see a shortcut of the `LocalState` folder in `C:` drive. This
+  is a junction link.
+</p>
+
+<p>
+  Congratulations, you have successfully moved WSL from C: drive to some other
+  drive in your computer. Make sure that the drive in which you moved your
+  `LocalState` folder is mounted when you run WSL. Unless you copied to an
+  external drive, this should not be a problem.
+</p>
+
+<p>Also, don’t delete your `LocalState` folder. It will break your WSL.</p>
+
+Happy Hacking!
