@@ -12,7 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.14",
+    "@tailwindcss/typography": "^0.5.19",
     "aos": "3.0.0-beta.6",
     "framer-motion": "^10.18.0",
     "gray-matter": "^4.0.3",
@@ -48,5 +48,8 @@
     "typescript": "^5.2.2",
     "velite": "^0.1.1",
     "vite": "^5.4.1"
+  },
+  "resolutions": {
+    "glob": "^10.5.0"
   }
 }
