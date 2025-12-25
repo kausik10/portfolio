@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaInstagram, FaFacebookF } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { siteConfig } from "../config/site";
-
+import emailjs from "@emailjs/browser";
 // interface FormData {
 //   name: string;
 //   message: string;
@@ -13,18 +13,36 @@ const Footer = () => {
   const { register, handleSubmit, reset } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const onSubmitHandler = (data: any) => {
+  const SERVICE_ID = import.meta.env.VITE_EMAIL_JS_SERVICE_ID as string;
+  const TEMPLATE_ID = import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID as string;
+  const PUBLIC_KEY = import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY as string;
+
+  const sendEmail = (data: any) => {
     setIsSubmitting(true);
 
-    const subject = encodeURIComponent(`Message from ${data.name}`);
-    const body = encodeURIComponent(data.message);
-    const gmailComposeURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${siteConfig.links.gmail}&su=${subject}&body=${body}`;
-
-    window.open(gmailComposeURL, "_blank");
-
-    reset();
-    setIsSubmitting(false);
+    emailjs
+      .send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: data.name,
+          message: data.message,
+        },
+        PUBLIC_KEY,
+      )
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          reset();
+          setIsSubmitting(false);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setIsSubmitting(false);
+        },
+      );
   };
+
   return (
     <footer
       id="footer"
@@ -78,7 +96,7 @@ const Footer = () => {
         <div className="w-[90%] rounded-lg border border-light_text p-4 md:w-1/3">
           <h2 className="mb-4 text-xl font-semibold">Send me a message</h2>
           <form
-            onSubmit={handleSubmit(onSubmitHandler)}
+            onSubmit={handleSubmit(sendEmail)}
             className="flex flex-col space-y-4"
           >
             <input
