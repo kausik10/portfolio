@@ -7,8 +7,10 @@ const navItems: NavItems[] = [
   { id: 1, label: "Home" },
   { id: 2, label: "About" },
   { id: 3, label: "Projects" },
-  { id: 4, label: "Contact" },
-  { id: 5, label: "Blog" },
+  { id: 4, label: "Work" },
+  { id: 5, label: "Publications" },
+  { id: 6, label: "Blog" },
+  { id: 7, label: "Contact" },
 ];
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
